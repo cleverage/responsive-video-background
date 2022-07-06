@@ -99,7 +99,6 @@ export class ResponsiveVideoBackground extends HTMLElement {
 
       // Insert the video element in the DOM before the overlay
       this.shadowRoot.insertBefore(videoElement, overlayElement);
-
     } else if (srcset) {
       // the viewport is less than `breakpoint` pixels wide, or there is no video, and there is an image
 
@@ -115,7 +114,6 @@ export class ResponsiveVideoBackground extends HTMLElement {
 
       // Insert the image element in the DOM before the overlay
       this.shadowRoot.insertBefore(imageElement, overlayElement);
-
     }
   }
 }
