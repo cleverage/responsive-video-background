@@ -12,6 +12,8 @@
 
 <h1><code>&lt;responsive-video-background&gt;</code> Web Component</h1>
 
+<p>A Web Component that helps <strong>using a video as the background of a content block</strong>.</p>
+<p>The video usage can be restricted to large viewports, with an image fallback on thinner ones.</p>
 <p class="github">
   <a href="https://github.com/cleverage/responsive-video-background/">
     View on github
@@ -19,25 +21,29 @@
   </a>
 </p>
 
-<p>A Web Component helping using a video as the background of a content block.</p>
-<p>The video can be limited to large viewports, with an image fallback on thinner ones.</p>
+<nav>
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#api">API</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
 
 <responsive-video-background
-    class="demo demo1"
+    class="demo1"
     mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
     poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg"
     fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
     srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
     sizes="calc(100vh - 2rem)"
-    breakpoint="768px">
-  <div>
-    <h1>A fixed height component with a responsive video or image background</h1>
-  </div>
+    breakpoint="48rem">
+      <h1>A component with a responsive video background above 48rem viewport</h1>
+      <p>A paragraph of text</p>
+      <p>A second paragraph of text</p>
 </responsive-video-background>
 
-<h2>Usage</h2>
-
-<h3>Syntax</h3>
+<h2 id="syntax">Syntax</h2>
 
 <p>Components configuration is done with attributes:</p>
 <code><pre>
@@ -59,7 +65,7 @@
 &lt;/responsive-video-background&gt;
 </pre></code>
 
-<h3>API</h3>
+<h2 id="api">API</h2>
 
 <table border="1">
 <thead>
@@ -126,44 +132,52 @@
 </tbody>
 </table>
 
-<h2>Examples</h2>
+<h2 id="examples">Examples</h2>
 
 <responsive-video-background
-    class="demo demo2"
+    class="demo2"
     mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
     poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg">
-  <div style="height: 20rem">
+  <div class="grid">
     <h1>A dynamic width component with a video background</h1>
   </div>
 </responsive-video-background>
 
 <responsive-video-background
-    class="demo demo3"
+    class="demo3"
     mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
     poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg">
-  <div>
+  <div class="grid">
     <h1>A small component with a video background</h1>
   </div>
 </responsive-video-background>
 
 <responsive-video-background
-class="demo demo4"
+class="demo4"
 fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
     srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
     sizes="(min-width: 92rem) 90rem, calc(100vh - 2rem)">
-  <div>
+  <div class="grid">
     <h1>A fixed height component with an image background</h1>
     <p>Look here!</p>
   </div>
 </responsive-video-background>
 
 <responsive-video-background
-    class="demo demo5"
+    class="demo5"
     mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4">
-  <div>
+  <div class="grid">
     <h1>A fluid height component with an image background</h1>
   </div>
 </responsive-video-background>
+
+<h2 id="faq">FAQ</h2>
+
+<dl>
+  <dt>Why isn't the image switching to a video when the viewport becomes larger?</dt>
+  <dd>This is not a bug. The idea is to prevent a strong visual change when the user changes the viewport, either by resizing the browser, or rotating the device.</dd>
+</dl>
+
 </div>
 <script type="module" src="./demo/app.js"></script>
 </body>

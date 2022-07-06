@@ -2,34 +2,42 @@ const template = document.createElement('template');
 template.innerHTML = `
   <style>
     :host {
-        display: grid;
+      display: inline-block;
+      box-sizing: border-box;
+    }
+    :host * {
+      box-sizing: inherit;
+    }
+
+    :host {
+      position: relative;
+      overflow: hidden;
     }
 
     :host .background,
-    :host .overlay,
-    :host .content {
-      grid-row: 1 / 2;
-      grid-column: 1 / 2;
+    :host .overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
     }
 
     :host .background {
-      width: 100%;
       object-position: center center;
       object-fit: cover;
-
-      // initial state before JS runs
-      height: 0;
-      visibility: hidden;
     }
 
     :host .overlay {
-      background: var(--overlay-background, transparent);
+      background-color: var(--overlay-color, transparent);
     }
 
     /* Fix for Safari that puts inline videos on top by default */
-    :host .background { z-index: 50; }
-    :host .overlay { z-index: 51; }
-    :host .content { z-index: 52; }
+    :host .background { z-index: 48; }
+    :host .overlay { z-index: 49; }
+    :host .content { position: relative; z-index: 50; }
   </style>
   <div class="overlay"></div>
   <div class="content">
@@ -56,7 +64,6 @@ export class ResponsiveVideoBackground extends HTMLElement {
     const breakpoint = this.getAttribute('breakpoint');
 
     const overlayElement = this.shadowRoot.querySelector('.overlay');
-    const contentElement = this.shadowRoot.querySelector('.content');
 
     if (
       (webm || mp4) &&
@@ -90,14 +97,9 @@ export class ResponsiveVideoBackground extends HTMLElement {
         videoElement.appendChild(mp4Source);
       }
 
-      const height = contentElement.offsetHeight;
-      videoElement.style.setProperty('height', `${height}px`);
-
       // Insert the video element in the DOM before the overlay
       this.shadowRoot.insertBefore(videoElement, overlayElement);
 
-      // backgroundElement.appendChild(videoElement);
-      videoElement.style.setProperty('visibility', 'visible');
     } else if (srcset) {
       // the viewport is less than `breakpoint` pixels wide, or there is no video, and there is an image
 
@@ -114,29 +116,6 @@ export class ResponsiveVideoBackground extends HTMLElement {
       // Insert the image element in the DOM before the overlay
       this.shadowRoot.insertBefore(imageElement, overlayElement);
 
-      // Show the image
-      imageElement.style.setProperty('visibility', 'visible');
     }
-
-    const resizeObserver = new ResizeObserver(entries => {
-      window.requestAnimationFrame(() => {
-        if (!Array.isArray(entries) || !entries.length) {
-          return;
-        }
-        for (const entry of entries) {
-          // if (entry.target.parentNode.host.classList.contains('demo1')) {
-          //   console.dir(entry.target);
-          //   console.dir(entry.target.parentNode.querySelector(".background"));
-          //   console.log(entry.borderBoxSize[0].blockSize);
-          // }
-          const backgroundElement = entry.target.parentNode.querySelector('.background');
-          if (backgroundElement) {
-            backgroundElement.style.height = `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`;
-          }
-        }
-      });
-    });
-
-    resizeObserver.observe(this.shadowRoot.querySelector('.content > slot'));
   }
 }

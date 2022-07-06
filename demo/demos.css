@@ -1,9 +1,12 @@
 responsive-video-background {
   margin-top: 1rem;
-  --overlay-background: hsla(0, 0, 0, 0.3);
+  padding: 1rem;
+  color: white;
+  text-shadow: .1em .1em .5em black;
 }
 
-.demo > div {
+.grid {
+  display: block;
   padding: 1rem;
 
   display: grid;
@@ -13,31 +16,35 @@ responsive-video-background {
 
 }
 
-.demo h1 {
+.grid h1 {
   grid-column: 1 / span 3;
   grid-row: 2 / span 1;
   align-self: center;
   justify-self: center;
 
-  font-family: system, sans-serif;
-  color: white;
-  text-shadow: 1px 1px 5px black;
 }
 
+.demo1 {
+  width: 100%;
+  --overlay-color: hsla(0, 0%, 0%, 0.3);
+}
 .demo1 > div {
   height: 20rem;
 }
 
 .demo2 {
   width: clamp(20rem, 50rem - 30vw, 100%);
+  --overlay-color: hsla(180, 50%, 50%, 0.5);
+}
+.demo2 > div {
   height: 20rem;
   margin-left: auto;
   margin-right: auto;
-  --overlay-background: hsla(180, 50%, 50%, 0.3);
 }
 
 .demo3 {
-  --overlay-background: hsla(60, 70%, 80%, 0.7);
+  --overlay-color: hsla(60, 70%, 80%, 0.7);
+  width: 100%;
 }
 .demo3 > div {
   height: 150px;
@@ -47,6 +54,10 @@ responsive-video-background {
   text-shadow: 3px 3px 10px hsla(60, 70%, 30%, 0.8);
 }
 
+.demo4 {
+  width: 100%;
+  --overlay-color: hsla(180, 70%, 80%, 0.5);
+}
 .demo4 > div {
   height: 600px;
 }
@@ -60,6 +71,10 @@ responsive-video-background {
   text-shadow: 0 0 5px white;
 }
 
+.demo5 {
+  width: 100%;
+  --overlay-color: hsla(240, 70%, 80%, 0.5);
+}
 .demo5 > div {
   aspect-ratio: 4/1;
 }
