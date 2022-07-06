@@ -15,6 +15,19 @@
 <p>A Web Component helping using a video as the background of a content block.</p>
 <p>The video can be limited to large viewports, with an image fallback on thinner ones.</p>
 
+<responsive-video-background
+    class="demo demo1"
+    mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
+    poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg"
+    fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
+    srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
+    sizes="calc(100vh - 2rem)"
+    breakpoint="768px">
+  <div>
+    <h1>A fixed height component with a responsive video or image background</h1>
+  </div>
+</responsive-video-background>
+
 <h2>Usage</h2>
 
 <h3>Syntax</h3>
@@ -107,19 +120,6 @@
 </table>
 
 <h2>Examples</h2>
-
-<responsive-video-background
-    class="demo demo1"
-    mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
-    poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg"
-    fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
-    srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
-    sizes="calc(100vh - 2rem)"
-    breakpoint="768px">
-  <div>
-    <h1>A fluid height component with an image background</h1>
-  </div>
-</responsive-video-background>
 
 <responsive-video-background
     class="demo demo2"
