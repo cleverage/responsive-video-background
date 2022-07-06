@@ -19,7 +19,7 @@
 
 <h3>Syntax</h3>
 
-<p>Components configuration is done with data attributes:</p>
+<p>Components configuration is done with attributes:</p>
 <code><pre>
 &lt;style&gt;
 …inline CSS styles for the component, to prevent layout shift
@@ -29,7 +29,7 @@
     webm="video.webm"
     mp4="video.mp4"
     poster="video-poster.jpg"
-    image="image.jpg"
+    fallback="not-responsive-image.jpg"
     srcset="image-320.jpg 320w, image-640.jpg 640w, image-1024.jpg 1024w"
     sizes="calc(100vh - 2rem)"
     breakpoint="48rem"&gt;
@@ -50,39 +50,57 @@
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <th scope="row"><code>webm</code></th>
+  <tr scope="row">
+    <th><code>webm</code></th>
     <td>URL to the WebM version of the video</td>
     <td><code>https://example.com/path/to/video.webm</code></td>
   </tr>
-  <tr>
-    <th scope="row"><code>mp4</code></th>
+  <tr scope="row">
+    <th><code>mp4</code></th>
     <td>URL to the MP4 version of the video</td>
     <td><code>https://example.com/path/to/video.mp4</code></td>
   </tr>
-  <tr>
-    <th scope="row"><code>poster</code></th>
+  <tr scope="row">
+    <th><code>poster</code></th>
     <td>URL to the video's poster image (should be the first frame)</td>
     <td><code>https://example.com/path/to/video-poster.jpg</code></td>
   </tr>
-  <tr>
-    <th scope="row"><code>image</code></th>
+  <tr scope="row">
+    <th><code>fallback</code></th>
     <td>URL to the fallback image, for the <code>src</code> attribute</td>
     <td><code>https://example.com/path/to/image-fallback.jpg</code></td>
   </tr>
-  <tr>
-    <th scope="row"><code>srcset</code></th>
-    <td>value of the <code>srcset</code> attribute for the responsive image</td>
+  <tr scope="row">
+    <th><code>srcset</code></th>
+    <td>
+      <p>Value of the <code>srcset</code> attribute for the responsive image</p>
+      <p>If this option is set, these other ones are mandatory:</p>
+      <ul>
+        <li><code>webm</code> and/or <code>mp4</code></li>
+        <li><code>fallback</code></li>
+        <li><code>srcset</code></li>
+        <li><code>sizes</code></li>
+      </ul>
+    </td>
     <td><code>https://example.com/path/to/image-320px.jpg 320w, https://example.com/path/to/image-850px.jpg 850w, https://example.com/path/to/image-1600px.jpg 1600w</code></td>
   </tr>
-  <tr>
-    <th scope="row"><code>sizes</code></th>
+  <tr scope="row">
+    <th><code>sizes</code></th>
     <td>value of the <code>sizes</code> attribute for the responsive image</td>
     <td><code>calc(100vh - 2rem)</code></td>
   </tr>
-  <tr>
-    <th scope="row"><code>breakpoint</code></th>
-    <td>viewport width breakpoint, if there should be an image on thin viewports and a video on larger viewports</td>
+  <tr scope="row">
+    <th><code>breakpoint</code></th>
+    <td>
+      <p>Viewport width breakpoint, if there should be an image on thin viewports and a video on larger viewports</p>
+      <p>If this option is set, these other ones are mandatory:</p>
+      <ul>
+        <li><code>webm</code> and/or <code>mp4</code></li>
+        <li><code>fallback</code></li>
+        <li><code>srcset</code></li>
+        <li><code>sizes</code></li>
+      </ul>
+    </td>
     <td><code>48rem</code></td>
   </tr>
 </tbody>
