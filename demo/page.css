@@ -22,3 +22,23 @@ body {
   max-width: 90rem;
   margin: 0 auto;
 }
+
+.github {
+  float: right;
+  font-size: 1.1em;
+}
+.github a {
+  display: inline-block;
+  padding: .1em .5em;
+
+  text-decoration: none;
+
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid currentColor;
+  border-radius: .25em;
+}
+.github svg {
+  vertical-align: middle;
+  fill: currentColor;
+}
