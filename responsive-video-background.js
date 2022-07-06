@@ -1,4 +1,4 @@
-const template = document.createElement("template");
+const template = document.createElement('template');
 template.innerHTML = `
   <style>
     :host {
@@ -38,105 +38,105 @@ template.innerHTML = `
 `;
 
 export class ResponsiveVideoBackground extends HTMLElement {
-  static is = "responsive-video-background";
+  static is = 'responsive-video-background';
 
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
-    let webm = this.getAttribute("webm");
-    let mp4 = this.getAttribute("mp4");
-    let poster = this.getAttribute("poster");
-    let fallback = this.getAttribute("fallback");
-    let srcset = this.getAttribute("srcset");
-    let sizes = this.getAttribute("sizes");
-    let breakpoint = this.getAttribute("breakpoint");
+    const webm = this.getAttribute('webm');
+    const mp4 = this.getAttribute('mp4');
+    const poster = this.getAttribute('poster');
+    const fallback = this.getAttribute('fallback');
+    const srcset = this.getAttribute('srcset');
+    const sizes = this.getAttribute('sizes');
+    const breakpoint = this.getAttribute('breakpoint');
 
-    const overlayElement = this.shadowRoot.querySelector(".overlay");
-    const contentElement = this.shadowRoot.querySelector(".content");
+    const overlayElement = this.shadowRoot.querySelector('.overlay');
+    const contentElement = this.shadowRoot.querySelector('.content');
 
     if (
       (webm || mp4) &&
-      (breakpoint === null ||
-        window.matchMedia(`(min-width: ${breakpoint})`).matches)
+      (breakpoint === null || window.matchMedia(`(min-width: ${breakpoint})`).matches)
     ) {
       // there's a video and the viewport is at least`breakpoint` pixels wide, let's show the video
-      const videoElement = document.createElement("video");
-      videoElement.classList.add("background");
+      const videoElement = document.createElement('video');
+      videoElement.classList.add('background');
 
-      videoElement.setAttribute("playsinline", "");
-      videoElement.setAttribute("no-controls", "");
-      videoElement.setAttribute("autoplay", "");
-      videoElement.setAttribute("muted", "");
-      videoElement.setAttribute("loop", "");
+      videoElement.setAttribute('playsinline', '');
+      videoElement.setAttribute('no-controls', '');
+      videoElement.setAttribute('autoplay', '');
+      videoElement.setAttribute('muted', '');
+      videoElement.setAttribute('loop', '');
       // Uncomment this if CORS is required and video server sends Access-Control-Allow-Origin header
       // videoElement.setAttribute("crossorigin", "anonymous");
 
       if (poster) {
-        videoElement.setAttribute("poster", poster);
+        videoElement.setAttribute('poster', poster);
       }
       if (webm) {
-        let webmSource = document.createElement("source");
-        webmSource.setAttribute("src", webm);
-        webmSource.setAttribute("type", "video/webm");
+        const webmSource = document.createElement('source');
+        webmSource.setAttribute('src', webm);
+        webmSource.setAttribute('type', 'video/webm');
         videoElement.appendChild(webmSource);
       }
       if (mp4) {
-        let mp4Source = document.createElement("source");
-        mp4Source.setAttribute("src", mp4);
-        mp4Source.setAttribute("type", "video/mp4");
+        const mp4Source = document.createElement('source');
+        mp4Source.setAttribute('src', mp4);
+        mp4Source.setAttribute('type', 'video/mp4');
         videoElement.appendChild(mp4Source);
       }
 
-      let height = contentElement.offsetHeight;
-      videoElement.style.setProperty("height", `${height}px`);
+      const height = contentElement.offsetHeight;
+      videoElement.style.setProperty('height', `${height}px`);
 
       // Insert the video element in the DOM before the overlay
       this.shadowRoot.insertBefore(videoElement, overlayElement);
 
       // backgroundElement.appendChild(videoElement);
-      videoElement.style.setProperty("visibility", "visible");
+      videoElement.style.setProperty('visibility', 'visible');
     } else if (srcset) {
       // the viewport is less than `breakpoint` pixels wide, or there is no video, and there is an image
 
-      const imageElement = document.createElement("img");
-      imageElement.classList.add("background");
-      if (fallback) { imageElement.setAttribute("src", fallback); }
-      imageElement.setAttribute("srcset", srcset);
-      if (sizes) { imageElement.setAttribute("sizes", sizes); }
+      const imageElement = document.createElement('img');
+      imageElement.classList.add('background');
+      if (fallback) {
+        imageElement.setAttribute('src', fallback);
+      }
+      imageElement.setAttribute('srcset', srcset);
+      if (sizes) {
+        imageElement.setAttribute('sizes', sizes);
+      }
 
       // Insert the image element in the DOM before the overlay
       this.shadowRoot.insertBefore(imageElement, overlayElement);
 
       // Show the image
-      imageElement.style.setProperty("visibility", "visible");
+      imageElement.style.setProperty('visibility', 'visible');
     }
 
-    const resizeObserver = new ResizeObserver((entries) => {
+    const resizeObserver = new ResizeObserver(entries => {
       window.requestAnimationFrame(() => {
         if (!Array.isArray(entries) || !entries.length) {
           return;
         }
-        for (let entry of entries) {
+        for (const entry of entries) {
           // if (entry.target.parentNode.host.classList.contains('demo1')) {
           //   console.dir(entry.target);
           //   console.dir(entry.target.parentNode.querySelector(".background"));
           //   console.log(entry.borderBoxSize[0].blockSize);
           // }
-          let backgroundElement =
-            entry.target.parentNode.querySelector(".background");
+          const backgroundElement = entry.target.parentNode.querySelector('.background');
           if (backgroundElement) {
-            backgroundElement.style.height = `${Math.ceil(
-              entry.borderBoxSize[0].blockSize
-            )}px`;
+            backgroundElement.style.height = `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`;
           }
         }
       });
     });
 
-    resizeObserver.observe(this.shadowRoot.querySelector(".content > slot"));
+    resizeObserver.observe(this.shadowRoot.querySelector('.content > slot'));
   }
 }
