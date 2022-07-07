@@ -15,10 +15,6 @@
         A Web Component that helps
         <strong>responsively using a video as the background of a content block</strong>.
       </p>
-      <p>
-        The video usage can be restricted to large viewports, with an image fallback on thinner
-        ones.
-      </p>
       <p class="github">
         <a href="https://github.com/cleverage/responsive-video-background/">
           View on github
@@ -30,15 +26,6 @@
           </svg>
         </a>
       </p>
-
-      <nav>
-        <ul>
-          <li><a href="#syntax">Syntax</a></li>
-          <li><a href="#api">API</a></li>
-          <li><a href="#examples">Examples</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </nav>
 
       <responsive-video-background
         class="demo1"
@@ -53,109 +40,6 @@
         <p>A paragraph of text</p>
         <p>A second paragraph of text</p>
       </responsive-video-background>
-
-      <h2 id="syntax">Syntax</h2>
-
-      <p>Components configuration is done with attributes:</p>
-      <code
-        ><pre>
-&lt;style&gt;
-…inline CSS styles for the component, to prevent layout shift
-&lt;/style&gt;
-&lt;responsive-video-background
-    class="…"
-    webm="video.webm"
-    mp4="video.mp4"
-    poster="video-poster.jpg"
-    fallback="not-responsive-image.jpg"
-    srcset="image-320.jpg 320w, image-640.jpg 640w, image-1024.jpg 1024w"
-    sizes="calc(100vh - 2rem)"
-    breakpoint="48rem"&gt;
-  &lt;div&gt;
-    Some content…
-  &lt;/div&gt;
-&lt;/responsive-video-background&gt;
-</pre
-        ></code
-      >
-
-      <h2 id="api">API</h2>
-
-      <table border="1">
-        <thead>
-          <tr>
-            <th scope="col">Attribute</th>
-            <th scope="col">Description</th>
-            <th scope="col">Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr scope="row">
-            <th><code>webm</code></th>
-            <td>URL to the WebM version of the video</td>
-            <td><code>https://example.com/path/to/video.webm</code></td>
-          </tr>
-          <tr scope="row">
-            <th><code>mp4</code></th>
-            <td>URL to the MP4 version of the video</td>
-            <td><code>https://example.com/path/to/video.mp4</code></td>
-          </tr>
-          <tr scope="row">
-            <th><code>poster</code></th>
-            <td>URL to the video's poster image (should be the first frame)</td>
-            <td><code>https://example.com/path/to/video-poster.jpg</code></td>
-          </tr>
-          <tr scope="row">
-            <th><code>fallback</code></th>
-            <td>URL to the fallback image, for the <code>src</code> attribute</td>
-            <td><code>https://example.com/path/to/image-fallback.jpg</code></td>
-          </tr>
-          <tr scope="row">
-            <th><code>srcset</code></th>
-            <td>
-              <p>Value of the <code>srcset</code> attribute for the responsive image</p>
-              <p>If this option is set, these other ones are mandatory:</p>
-              <ul>
-                <li><code>webm</code> and/or <code>mp4</code></li>
-                <li><code>fallback</code></li>
-                <li><code>srcset</code></li>
-                <li><code>sizes</code></li>
-              </ul>
-            </td>
-            <td>
-              <code
-                >https://example.com/path/to/image-320px.jpg 320w,
-                https://example.com/path/to/image-850px.jpg 850w,
-                https://example.com/path/to/image-1600px.jpg 1600w</code
-              >
-            </td>
-          </tr>
-          <tr scope="row">
-            <th><code>sizes</code></th>
-            <td>value of the <code>sizes</code> attribute for the responsive image</td>
-            <td><code>calc(100vh - 2rem)</code></td>
-          </tr>
-          <tr scope="row">
-            <th><code>breakpoint</code></th>
-            <td>
-              <p>
-                Viewport width breakpoint, if there should be an image on thin viewports and a video
-                on larger viewports
-              </p>
-              <p>If this option is set, these other ones are mandatory:</p>
-              <ul>
-                <li><code>webm</code> and/or <code>mp4</code></li>
-                <li><code>fallback</code></li>
-                <li><code>srcset</code></li>
-                <li><code>sizes</code></li>
-              </ul>
-            </td>
-            <td><code>48rem</code></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 id="examples">Examples</h2>
 
       <responsive-video-background
         class="demo2"
@@ -198,16 +82,6 @@
         </div>
       </responsive-video-background>
 
-      <h2 id="faq">FAQ</h2>
-
-      <dl>
-        <dt>Why isn't the image switching to a video when the viewport becomes larger?</dt>
-        <dd>
-          This is not a bug. The idea is to prevent a strong visual change when the user changes the
-          viewport, either by resizing the browser, or rotating the device.
-        </dd>
-      </dl>
-    </div>
     <script type="module" src="./demo/app.js"></script>
   </body>
 </html>
