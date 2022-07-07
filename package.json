@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A JavaScript library to help build components with responsive video and/or image background",
   "main": "responsive-video-background.js",
   "type": "module",
