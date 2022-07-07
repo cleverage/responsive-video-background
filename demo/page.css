@@ -5,10 +5,10 @@
 body {
   font-family: sans-serif;
   line-height: 1.5;
-  color: #333;
-  background-color: #eee;
   margin: 0;
   padding: 1rem;
+  background-color: #223445;
+  color: white;
 }
 
 .page {
@@ -17,7 +17,13 @@ body {
   padding: 1rem;
   border-radius: .5rem;
   background-color: #fff;
+  color: #223445;
 }
+
+a {
+  color: #e8be6e;
+}
+
 
 .github {
   text-align: center;
