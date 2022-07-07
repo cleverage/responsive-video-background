@@ -18,7 +18,7 @@ The Web Component's configuration is done with attributes:
 
 ```html
 <style>
-…inline CSS styles for the component, to prevent layout shifts
+/* …inline CSS styles for the component, to prevent layout shifts */
 </style>
 <responsive-video-background
     class="…"
