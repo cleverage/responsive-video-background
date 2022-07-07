@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>&lt;responsive-video-background&gt; Web Component</title>
-  <link rel="stylesheet" href="demo/page.css">
-  <link rel="stylesheet" href="demo/demos.css">
-</head>
-<body>
-<div class="page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;responsive-video-background&gt; Web Component</title>
+    <link rel="stylesheet" href="demo/page.css" />
+    <link rel="stylesheet" href="demo/demos.css" />
+  </head>
+  <body>
+    <div class="page">
+      <h1><code>&lt;responsive-video-background&gt;</code> Web Component</h1>
 
-<h1><code>&lt;responsive-video-background&gt;</code> Web Component</h1>
+      <p>
+        A Web Component that helps
+        <strong>responsively using a video as the background of a content block</strong>.
+      </p>
+      <p>
+        The video usage can be restricted to large viewports, with an image fallback on thinner
+        ones.
+      </p>
+      <p class="github">
+        <a href="https://github.com/cleverage/responsive-video-background/">
+          View on github
+          <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              fill-rule="evenodd"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+            ></path>
+          </svg>
+        </a>
+      </p>
 
-<p>A Web Component that helps <strong>responsively using a video as the background of a content block</strong>.</p>
-<p>The video usage can be restricted to large viewports, with an image fallback on thinner ones.</p>
-<p class="github">
-  <a href="https://github.com/cleverage/responsive-video-background/">
-    View on github
-    <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-  </a>
-</p>
+      <nav>
+        <ul>
+          <li><a href="#syntax">Syntax</a></li>
+          <li><a href="#api">API</a></li>
+          <li><a href="#examples">Examples</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
 
-<nav>
-  <ul>
-    <li><a href="#syntax">Syntax</a></li>
-    <li><a href="#api">API</a></li>
-    <li><a href="#examples">Examples</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-</nav>
+      <responsive-video-background
+        class="demo1"
+        mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
+        poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg"
+        fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
+        srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
+        sizes="calc(100vh - 2rem)"
+        breakpoint="48rem"
+      >
+        <h1>A component with a responsive video background above 48rem viewport</h1>
+        <p>A paragraph of text</p>
+        <p>A second paragraph of text</p>
+      </responsive-video-background>
 
-<responsive-video-background
-    class="demo1"
-    mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
-    poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg"
-    fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
-    srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
-    sizes="calc(100vh - 2rem)"
-    breakpoint="48rem">
-      <h1>A component with a responsive video background above 48rem viewport</h1>
-      <p>A paragraph of text</p>
-      <p>A second paragraph of text</p>
-</responsive-video-background>
+      <h2 id="syntax">Syntax</h2>
 
-<h2 id="syntax">Syntax</h2>
-
-<p>Components configuration is done with attributes:</p>
-<code><pre>
+      <p>Components configuration is done with attributes:</p>
+      <code
+        ><pre>
 &lt;style&gt;
 …inline CSS styles for the component, to prevent layout shift
 &lt;/style&gt;
@@ -63,122 +75,139 @@
     Some content…
   &lt;/div&gt;
 &lt;/responsive-video-background&gt;
-</pre></code>
+</pre
+        ></code
+      >
 
-<h2 id="api">API</h2>
+      <h2 id="api">API</h2>
 
-<table border="1">
-<thead>
-  <tr>
-    <th scope="col">Attribute</th>
-    <th scope="col">Description</th>
-    <th scope="col">Example</th>
-  </tr>
-</thead>
-<tbody>
-  <tr scope="row">
-    <th><code>webm</code></th>
-    <td>URL to the WebM version of the video</td>
-    <td><code>https://example.com/path/to/video.webm</code></td>
-  </tr>
-  <tr scope="row">
-    <th><code>mp4</code></th>
-    <td>URL to the MP4 version of the video</td>
-    <td><code>https://example.com/path/to/video.mp4</code></td>
-  </tr>
-  <tr scope="row">
-    <th><code>poster</code></th>
-    <td>URL to the video's poster image (should be the first frame)</td>
-    <td><code>https://example.com/path/to/video-poster.jpg</code></td>
-  </tr>
-  <tr scope="row">
-    <th><code>fallback</code></th>
-    <td>URL to the fallback image, for the <code>src</code> attribute</td>
-    <td><code>https://example.com/path/to/image-fallback.jpg</code></td>
-  </tr>
-  <tr scope="row">
-    <th><code>srcset</code></th>
-    <td>
-      <p>Value of the <code>srcset</code> attribute for the responsive image</p>
-      <p>If this option is set, these other ones are mandatory:</p>
-      <ul>
-        <li><code>webm</code> and/or <code>mp4</code></li>
-        <li><code>fallback</code></li>
-        <li><code>srcset</code></li>
-        <li><code>sizes</code></li>
-      </ul>
-    </td>
-    <td><code>https://example.com/path/to/image-320px.jpg 320w, https://example.com/path/to/image-850px.jpg 850w, https://example.com/path/to/image-1600px.jpg 1600w</code></td>
-  </tr>
-  <tr scope="row">
-    <th><code>sizes</code></th>
-    <td>value of the <code>sizes</code> attribute for the responsive image</td>
-    <td><code>calc(100vh - 2rem)</code></td>
-  </tr>
-  <tr scope="row">
-    <th><code>breakpoint</code></th>
-    <td>
-      <p>Viewport width breakpoint, if there should be an image on thin viewports and a video on larger viewports</p>
-      <p>If this option is set, these other ones are mandatory:</p>
-      <ul>
-        <li><code>webm</code> and/or <code>mp4</code></li>
-        <li><code>fallback</code></li>
-        <li><code>srcset</code></li>
-        <li><code>sizes</code></li>
-      </ul>
-    </td>
-    <td><code>48rem</code></td>
-  </tr>
-</tbody>
-</table>
+      <table border="1">
+        <thead>
+          <tr>
+            <th scope="col">Attribute</th>
+            <th scope="col">Description</th>
+            <th scope="col">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr scope="row">
+            <th><code>webm</code></th>
+            <td>URL to the WebM version of the video</td>
+            <td><code>https://example.com/path/to/video.webm</code></td>
+          </tr>
+          <tr scope="row">
+            <th><code>mp4</code></th>
+            <td>URL to the MP4 version of the video</td>
+            <td><code>https://example.com/path/to/video.mp4</code></td>
+          </tr>
+          <tr scope="row">
+            <th><code>poster</code></th>
+            <td>URL to the video's poster image (should be the first frame)</td>
+            <td><code>https://example.com/path/to/video-poster.jpg</code></td>
+          </tr>
+          <tr scope="row">
+            <th><code>fallback</code></th>
+            <td>URL to the fallback image, for the <code>src</code> attribute</td>
+            <td><code>https://example.com/path/to/image-fallback.jpg</code></td>
+          </tr>
+          <tr scope="row">
+            <th><code>srcset</code></th>
+            <td>
+              <p>Value of the <code>srcset</code> attribute for the responsive image</p>
+              <p>If this option is set, these other ones are mandatory:</p>
+              <ul>
+                <li><code>webm</code> and/or <code>mp4</code></li>
+                <li><code>fallback</code></li>
+                <li><code>srcset</code></li>
+                <li><code>sizes</code></li>
+              </ul>
+            </td>
+            <td>
+              <code
+                >https://example.com/path/to/image-320px.jpg 320w,
+                https://example.com/path/to/image-850px.jpg 850w,
+                https://example.com/path/to/image-1600px.jpg 1600w</code
+              >
+            </td>
+          </tr>
+          <tr scope="row">
+            <th><code>sizes</code></th>
+            <td>value of the <code>sizes</code> attribute for the responsive image</td>
+            <td><code>calc(100vh - 2rem)</code></td>
+          </tr>
+          <tr scope="row">
+            <th><code>breakpoint</code></th>
+            <td>
+              <p>
+                Viewport width breakpoint, if there should be an image on thin viewports and a video
+                on larger viewports
+              </p>
+              <p>If this option is set, these other ones are mandatory:</p>
+              <ul>
+                <li><code>webm</code> and/or <code>mp4</code></li>
+                <li><code>fallback</code></li>
+                <li><code>srcset</code></li>
+                <li><code>sizes</code></li>
+              </ul>
+            </td>
+            <td><code>48rem</code></td>
+          </tr>
+        </tbody>
+      </table>
 
-<h2 id="examples">Examples</h2>
+      <h2 id="examples">Examples</h2>
 
-<responsive-video-background
-    class="demo2"
-    mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
-    poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg">
-  <div class="grid">
-    <h1>A dynamic width component with a video background</h1>
-  </div>
-</responsive-video-background>
+      <responsive-video-background
+        class="demo2"
+        mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
+        poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg"
+      >
+        <div class="grid">
+          <h1>A dynamic width component with a video background</h1>
+        </div>
+      </responsive-video-background>
 
-<responsive-video-background
-    class="demo3"
-    mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
-    poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg">
-  <div class="grid">
-    <h1>A small component with a video background</h1>
-  </div>
-</responsive-video-background>
+      <responsive-video-background
+        class="demo3"
+        mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
+        poster="https://test-videos.co.uk/user/pages/images/big_buck_bunny.jpg"
+      >
+        <div class="grid">
+          <h1>A small component with a video background</h1>
+        </div>
+      </responsive-video-background>
 
-<responsive-video-background
-class="demo4"
-fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
-    srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
-    sizes="(min-width: 92rem) 90rem, calc(100vh - 2rem)">
-  <div class="grid">
-    <h1>A fixed height component with an image background</h1>
-    <p>Look here!</p>
-  </div>
-</responsive-video-background>
+      <responsive-video-background
+        class="demo4"
+        fallback="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80"
+        srcset="https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=420&q=80 420w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=768&q=80 768w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1024&q=80 1024w, https://images.unsplash.com/photo-1601629665203-f9f2b8d07019?auto=format&w=1440&q=80 1440w"
+        sizes="(min-width: 92rem) 90rem, calc(100vh - 2rem)"
+      >
+        <div class="grid">
+          <h1>A fixed height component with an image background</h1>
+          <p>Look here!</p>
+        </div>
+      </responsive-video-background>
 
-<responsive-video-background
-    class="demo5"
-    mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4">
-  <div class="grid">
-    <h1>A fluid height component with an image background</h1>
-  </div>
-</responsive-video-background>
+      <responsive-video-background
+        class="demo5"
+        mp4="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4"
+      >
+        <div class="grid">
+          <h1>A fluid height component with an image background</h1>
+        </div>
+      </responsive-video-background>
 
-<h2 id="faq">FAQ</h2>
+      <h2 id="faq">FAQ</h2>
 
-<dl>
-  <dt>Why isn't the image switching to a video when the viewport becomes larger?</dt>
-  <dd>This is not a bug. The idea is to prevent a strong visual change when the user changes the viewport, either by resizing the browser, or rotating the device.</dd>
-</dl>
-
-</div>
-<script type="module" src="./demo/app.js"></script>
-</body>
+      <dl>
+        <dt>Why isn't the image switching to a video when the viewport becomes larger?</dt>
+        <dd>
+          This is not a bug. The idea is to prevent a strong visual change when the user changes the
+          viewport, either by resizing the browser, or rotating the device.
+        </dd>
+      </dl>
+    </div>
+    <script type="module" src="./demo/app.js"></script>
+  </body>
 </html>
