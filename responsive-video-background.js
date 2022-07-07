@@ -117,3 +117,11 @@ export class ResponsiveVideoBackground extends HTMLElement {
     }
   }
 }
+
+if (
+  typeof window !== 'undefined' &&
+  'customElements' in window &&
+  window.customElements.get(ResponsiveVideoBackground.is) === undefined
+) {
+  window.customElements.define(ResponsiveVideoBackground.is, ResponsiveVideoBackground);
+}
