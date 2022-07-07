@@ -3,6 +3,7 @@ responsive-video-background {
   padding: 1rem;
   color: white;
   text-shadow: .1em .1em .5em black;
+  border-radius: 1rem;
 }
 
 .grid {

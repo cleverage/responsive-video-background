@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/@cleverage/responsive-video-background)](https://www.npmjs.com/package/@cleverage/responsive-video-background) [![npm](https://img.shields.io/npm/dm/@cleverage/responsive-video-background)](https://www.npmjs.com/package/@cleverage/responsive-video-background) ![GitHub](https://img.shields.io/github/license/cleverage/responsive-video-background) [![Built by Clever Age](https://img.shields.io/badge/Build%20by-Clever%20Age-223445?labelColor=98700e)](https://www.clever-age.com/)
 
-A Web Component that helps **responsively using a video as the background of a content block**.
+A Web Component that helps **responsively using a video as the background of a content block**. The video usage can be restricted to large viewports, with an image fallback on thinner ones.
 
-The video usage can be restricted to large viewports, with an image fallback on thinner ones.
+The dimensions of the Web Component are determined by the content inside it. You can style the Web Component with CSS, but it is better to style the content itself, as there could be a layout shift with the component's styles because JavaScript has to run to really make it available.
 
 ## Examples
 
@@ -37,9 +37,9 @@ The Web Component's configuration is done with attributes:
 
 | Attribute | Description | Example |
 | --------- | ----------- | ------- |
-| `webm` | URL to the WebM version of the video | https://example.com/path/to/video.webm |
-| `mp4` | URL to the MP4 version of the video | https://example.com/path/to/video.mp4 |
-| `poster` | URL to the video's poster image (should be the first frame) | https://example.com/path/to/video-poster.jpg |
+| `webm` | URL to the WebM version of the video | https://cleverage.github.io/responsive-video-background/demo/Big_Buck_Bunny_720_10s_1MB.webm |
+| `mp4` | URL to the MP4 version of the video | https://cleverage.github.io/responsive-video-background/Big_Buck_Bunny_720_10s_1MB.mp4 |
+| `poster` | URL to the video's poster image. This should be the first frame of the video, and an highly optimized progressive JPEG | https://cleverage.github.io/responsive-video-background/Big_Buck_Bunny_720.jpg |
 | `fallback` | URL to the fallback image, for the `src` attribute | https://example.com/path/to/image-fallback.jpg |
 | `srcset` | Value of the `srcset` attribute for the responsive image | `https://example.com/path/to/image-320px.jpg 320w, https://example.com/path/to/image-850px.jpg 850w, https://example.com/path/to/image-1600px.jpg 1600w` |
 | `sizes` | value of the `sizes` attribute for the responsive image | `calc(100vh - 2rem)` |
