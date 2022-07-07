@@ -58,5 +58,4 @@ If the `breakpoint` option is set, these other ones are mandatory:
 
 ## FAQ
 
-Why isn't the image switching to a video when the viewport becomes larger?
-: This is not a bug. The idea is to prevent a strong visual change when the user changes the viewport, either by resizing the browser, or rotating the device.
+| Why isn't the image switching to a video when the viewport becomes larger? | This is not a bug. The idea is to prevent a strong visual change when the user changes the viewport, either by resizing the browser, or rotating the device. |
