@@ -10,6 +10,36 @@ The dimensions of the Web Component are determined by the content inside it. You
 
 See on https://cleverage.github.io/responsive-video-background/
 
+## Installation
+
+### Use from a CDN
+
+The quickest way to get started and try the Web Component is to load `<responsive-video-background />` as a module script tag from a CDN:
+
+```html
+<script type="module" src="https://unpkg.com/@cleverage/responsive-video-background@^1"></script>
+```
+
+Don't forget the `type="module"` attribute, this is [own JavaScript modules are now loaded in HTML pages](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#applying_the_module_to_your_html).
+
+This is own it is used in [this demo in CodePen](https://codepen.io/nhoizey/pen/YzawBrq) that you can fork to play with it.
+
+### Better for performance: add a local version to your project
+
+`<responsive-video-background />` is also available [on npm](https://www.npmjs.com/package/@cleverage/responsive-video-background), so you can add it to your project with this shell command:
+
+```shell
+npm install @cleverage/responsive-video-background
+```
+
+You can then import it in your own project:
+
+```js
+import '@cleverage/responsive-video-background';
+```
+
+Your build tools will then be able to optimize where, when and how to load it.
+
 ## Usage
 
 ### Syntax
