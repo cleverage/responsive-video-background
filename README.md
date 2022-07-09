@@ -6,6 +6,8 @@ A Web Component that helps **responsively using a video as the background of a c
 
 The dimensions of the Web Component are determined by the content inside it. You can style the Web Component with CSS, but it is better to style the content itself, as there could be a layout shift with the component's styles because JavaScript has to run to really make it available.
 
+**Accessibility:** If there's a video, it will play only if if the user didn't "notify the system that they prefer an interface that removes or replaces the types of motion-based animation that trigger discomfort for those with vestibular motion disorders" thanks to [the CSS `prefers-reduced-motion` media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+
 ## Examples
 
 See on https://cleverage.github.io/responsive-video-background/
