@@ -20,6 +20,23 @@ body {
   color: #223445;
 }
 
+.clever-age-logo {
+  float: right;
+  min-width: 150px;
+  max-width: 25%;
+  margin: 0 0 1rem 2rem;
+  text-decoration: none;
+}
+
+.clever-age-logo svg {
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  margin-top: 0;
+}
+
 a {
   color: #e8be6e;
 }
