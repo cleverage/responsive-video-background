@@ -1,5 +1,5 @@
-const template = document.createElement('template');
-template.innerHTML = `
+const ResponsiveVideoBackgroundElementTemplate = document.createElement('template');
+ResponsiveVideoBackgroundElementTemplate.innerHTML = `
   <style>
     :host {
       display: inline-block;
@@ -51,7 +51,7 @@ export class ResponsiveVideoBackgroundElement extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.appendChild(ResponsiveVideoBackgroundElementTemplate.content.cloneNode(true));
   }
 
   connectedCallback() {
