@@ -45,7 +45,7 @@ template.innerHTML = `
   </div>
 `;
 
-export class ResponsiveVideoBackground extends HTMLElement {
+export class ResponsiveVideoBackgroundElement extends HTMLElement {
   static is = 'responsive-video-background';
 
   constructor() {
@@ -160,10 +160,12 @@ export class ResponsiveVideoBackground extends HTMLElement {
   }
 }
 
+window.ResponsiveVideoBackgroundElement = ResponsiveVideoBackgroundElement;
+
 if (
   typeof window !== 'undefined' &&
   'customElements' in window &&
-  window.customElements.get(ResponsiveVideoBackground.is) === undefined
+  window.customElements.get(ResponsiveVideoBackgroundElement.is) === undefined
 ) {
-  window.customElements.define(ResponsiveVideoBackground.is, ResponsiveVideoBackground);
+  window.customElements.define(ResponsiveVideoBackgroundElement.is, ResponsiveVideoBackgroundElement);
 }
