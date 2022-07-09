@@ -65,40 +65,82 @@ export class ResponsiveVideoBackground extends HTMLElement {
 
     const overlayElement = this.shadowRoot.querySelector('.overlay');
 
+    let videoIsLoaded = false;
+    let videoElement;
+
     if (
+      window.matchMedia('(prefers-reduced-motion: no-preference)') &&
       (webm || mp4) &&
       (breakpoint === null || window.matchMedia(`(min-width: ${breakpoint})`).matches)
     ) {
-      // there's a video and the viewport is at least`breakpoint` pixels wide, let's show the video
-      const videoElement = document.createElement('video');
-      videoElement.classList.add('background');
+      const addVideo = options => {
+        // there's a video and the viewport is at least`breakpoint` pixels wide, let's show the video
+        videoElement = document.createElement('video');
+        videoElement.classList.add('background');
 
-      videoElement.setAttribute('playsinline', '');
-      videoElement.setAttribute('no-controls', '');
-      videoElement.setAttribute('autoplay', '');
-      videoElement.setAttribute('muted', '');
-      videoElement.setAttribute('loop', '');
-      // Uncomment this if CORS is required and video server sends Access-Control-Allow-Origin header
-      // videoElement.setAttribute("crossorigin", "anonymous");
+        videoElement.setAttribute('playsinline', '');
+        videoElement.setAttribute('no-controls', '');
+        videoElement.setAttribute('muted', '');
+        videoElement.setAttribute('loop', '');
 
-      if (poster) {
-        videoElement.setAttribute('poster', poster);
-      }
-      if (webm) {
-        const webmSource = document.createElement('source');
-        webmSource.setAttribute('src', webm);
-        webmSource.setAttribute('type', 'video/webm');
-        videoElement.appendChild(webmSource);
-      }
-      if (mp4) {
-        const mp4Source = document.createElement('source');
-        mp4Source.setAttribute('src', mp4);
-        mp4Source.setAttribute('type', 'video/mp4');
-        videoElement.appendChild(mp4Source);
-      }
+        if ('autoplay' in options && options.autoplay) {
+          videoElement.setAttribute('autoplay', '');
+          videoElement.setAttribute('preload', 'auto');
+        } else {
+          videoElement.setAttribute('preload', 'none');
+        }
 
-      // Insert the video element in the DOM before the overlay
-      this.shadowRoot.insertBefore(videoElement, overlayElement);
+        // Uncomment this if CORS is required and video server sends Access-Control-Allow-Origin header
+        // videoElement.setAttribute("crossorigin", "anonymous");
+
+        if (poster) {
+          videoElement.setAttribute('poster', poster);
+        }
+        if (webm) {
+          const webmSource = document.createElement('source');
+          webmSource.setAttribute('src', webm);
+          webmSource.setAttribute('type', 'video/webm');
+          videoElement.appendChild(webmSource);
+        }
+        if (mp4) {
+          const mp4Source = document.createElement('source');
+          mp4Source.setAttribute('src', mp4);
+          mp4Source.setAttribute('type', 'video/mp4');
+          videoElement.appendChild(mp4Source);
+        }
+
+        // Insert the video element in the DOM before the overlay
+        this.shadowRoot.insertBefore(videoElement, overlayElement);
+
+        videoIsLoaded = true;
+      };
+
+      // Handle user preference for reduced motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion)');
+      const prefersReducedMotionNoPreference = window.matchMedia(
+        '(prefers-reduced-motion: no-preference)',
+      );
+
+      const handleReducedMotionChanged = () => {
+        if (prefersReducedMotionNoPreference.matches) {
+          if (videoIsLoaded) {
+            videoElement.play();
+          } else {
+            // Video is added to the page in autoplay because the user didn't prefer reduced motion
+            addVideo({ autoplay: true });
+          }
+        } else if (videoIsLoaded) {
+          videoElement.pause();
+        } else {
+          // Video is added to the page but without autoplay because the user prefers reduced motion
+          addVideo({ autoplay: false });
+        }
+      };
+
+      // trigger this once on load to set up the initial value
+      handleReducedMotionChanged();
+
+      prefersReducedMotion.addEventListener('change', handleReducedMotionChanged);
     } else if (srcset) {
       // the viewport is less than `breakpoint` pixels wide, or there is no video, and there is an image
 
