@@ -1,5 +1,5 @@
-const ResponsiveVideoBackgroundElementTemplate = document.createElement('template');
-ResponsiveVideoBackgroundElementTemplate.innerHTML = `
+const ResponsiveVideoBackgroundTemplate = document.createElement('template');
+ResponsiveVideoBackgroundTemplate.innerHTML = `
   <style>
     :host {
       display: inline-block;
@@ -45,18 +45,17 @@ ResponsiveVideoBackgroundElementTemplate.innerHTML = `
   </div>
 `;
 
-export class ResponsiveVideoBackgroundElement extends HTMLElement {
-  static is = 'responsive-video-background';
+export class ResponsiveVideoBackground extends HTMLElement {
 
   constructor() {
     super();
+
+    // Initialize Shadow DOM
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(ResponsiveVideoBackgroundTemplate.content.cloneNode(true));
   }
 
   connectedCallback() {
-    // Initialize Shadow DOM
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(ResponsiveVideoBackgroundElementTemplate.content.cloneNode(true));
-
     // Get attributes values
     const webm = this.getAttribute('webm');
     const mp4 = this.getAttribute('mp4');
@@ -163,12 +162,12 @@ export class ResponsiveVideoBackgroundElement extends HTMLElement {
   }
 }
 
-window.ResponsiveVideoBackgroundElement = ResponsiveVideoBackgroundElement;
+window.ResponsiveVideoBackground = ResponsiveVideoBackground;
 
 if (
   typeof window !== 'undefined' &&
   'customElements' in window &&
-  window.customElements.get(ResponsiveVideoBackgroundElement.is) === undefined
+  window.customElements.get('responsive-video-background') === undefined
 ) {
-  window.customElements.define(ResponsiveVideoBackgroundElement.is, ResponsiveVideoBackgroundElement);
+  window.customElements.define('responsive-video-background', ResponsiveVideoBackground);
 }

@@ -1,0 +1,15 @@
+{
+  "env": {
+    "es6": true
+  },
+  "parser": "@babel/eslint-parser",
+  "extends": [
+    "@open-wc/eslint-config",
+    "eslint-config-prettier",
+    "plugin:custom-elements/recommended"
+  ],
+  "rules": {
+    "wc/no-constructor-attributes": "off",
+    "custom-elements/no-constructor": "off"
+  }
+}
