@@ -1,6 +1,6 @@
 # `<responsive-video-background />` Web Component
 
-[![npm](https://img.shields.io/npm/v/@cleverage/responsive-video-background)](https://www.npmjs.com/package/@cleverage/responsive-video-background) [![npm](https://img.shields.io/npm/dm/@cleverage/responsive-video-background)](https://www.npmjs.com/package/@cleverage/responsive-video-background) ![GitHub](https://img.shields.io/github/license/cleverage/responsive-video-background) [![Built by Clever Age](https://img.shields.io/badge/Build%20by-Clever%20Age-223445?labelColor=98700e)](https://www.clever-age.com/)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/cleverage/responsive-video-background?label=GitHub) [![npm](https://img.shields.io/npm/v/@cleverage/responsive-video-background)](https://www.npmjs.com/package/@cleverage/responsive-video-background) [![npm](https://img.shields.io/npm/dm/@cleverage/responsive-video-background)](https://www.npmjs.com/package/@cleverage/responsive-video-background) ![GitHub](https://img.shields.io/github/license/cleverage/responsive-video-background) [![Built by Clever Age](https://img.shields.io/badge/Built%20by-Clever%20Age-223445?labelColor=98700e)](https://www.clever-age.com/)
 
 A Web Component that helps **responsively using a video as the background of a content block**. The video usage can be restricted to large viewports, with an image fallback on thinner ones.
 
