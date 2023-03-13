@@ -46,7 +46,6 @@ ResponsiveVideoBackgroundTemplate.innerHTML = `
 `;
 
 export class ResponsiveVideoBackground extends HTMLElement {
-
   constructor() {
     super();
 
