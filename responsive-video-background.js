@@ -82,7 +82,7 @@ export class ResponsiveVideoBackground extends HTMLElement {
 
         videoElement.setAttribute('playsinline', '');
         videoElement.setAttribute('no-controls', '');
-        videoElement.setAttribute('muted', '');
+        videoElement.muted = true;
         videoElement.setAttribute('loop', '');
 
         if ('autoplay' in options && options.autoplay) {
