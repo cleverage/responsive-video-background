@@ -8,6 +8,12 @@
   "main": "responsive-video-background.js",
   "type": "module",
   "module": "responsive-video-background.js",
+  "files": [
+    "package.json",
+    "responsive-video-background.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.{js,json,html}\" --check --ignore-path .gitignore",
